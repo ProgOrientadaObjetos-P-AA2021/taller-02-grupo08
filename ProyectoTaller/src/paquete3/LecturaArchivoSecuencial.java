@@ -14,7 +14,6 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import paquete2.PasajeInterCantonal;
 
-
 /**
  *
  * @author reroes
@@ -49,25 +48,24 @@ public class LecturaArchivoSecuencial {
         // 
         pasajes = new ArrayList<>();
         File f = new File(obtenerNombreArchivo());
+        if (f.exists()) {
+            while (true) {
+                try {
+                    Object registro = entrada.readObject();
+                    pasajes.add((PasajeInterCantonal)registro);
+                } catch (EOFException endOfFileException) {
+                    return; // se llegó al fin del archivo
 
-        while (true) {
-            try {
-                
-                Object registro = entrada.readObject();
-                pasajes.add((PasajeInterCantonal)registro);
-            } catch (EOFException endOfFileException) {
-                return; // se llegó al fin del archivo
-
-            } catch (IOException ex) {
-                System.err.println("Error al leer el archivo: " + ex);
-            } catch (ClassNotFoundException ex) {
-                System.err.println("No se pudo crear el objeto: " + ex);
-            } catch (Exception ex) {
-                // System.err.println("No hay datos en el archivo: " + ex);
-                break;
+                } catch (IOException ex) {
+                    System.err.println("Error al leer el archivo: " + ex);
+                } catch (ClassNotFoundException ex) {
+                    System.err.println("No se pudo crear el objeto: " + ex);
+                } catch (Exception ex) {
+                    // System.err.println("No hay datos en el archivo: " + ex);
+                    break;
+                }
             }
         }
-
     }
 
     public ArrayList<PasajeInterCantonal> obtenerListaPasajes() {

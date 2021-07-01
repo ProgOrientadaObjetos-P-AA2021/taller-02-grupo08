@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import paquete2.PasajeInterCantonal;
 
 
-
 public class EscrituraArchivoSecuencial {
 
     private String nombreArchivo;
@@ -45,7 +44,6 @@ public class EscrituraArchivoSecuencial {
     public void establecerNombreArchivo(String n){
         nombreArchivo = n;
     }
-    
     // agrega registros al archivo
     public void establecerRegistro(PasajeInterCantonal p) {
         registro = p;
@@ -53,8 +51,7 @@ public class EscrituraArchivoSecuencial {
 
     public void establecerSalida() {
         try {
-            salida.writeObject(registro); // envía el registro como salida
-            
+            salida.writeObject(registro); // envía el registro como salida      
         } catch (IOException ex) {
             System.err.println("Error al escribir en el archivo.");
             System.err.println(ex);
