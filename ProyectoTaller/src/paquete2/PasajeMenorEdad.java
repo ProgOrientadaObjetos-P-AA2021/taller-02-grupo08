@@ -13,7 +13,9 @@ import java.io.Serializable;
  */
 public class PasajeMenorEdad extends PasajeInterCantonal 
         implements Serializable{
-    
-    
-    
+
+    public PasajeMenorEdad(double b) {
+        super(b);
+    }
+  
 }

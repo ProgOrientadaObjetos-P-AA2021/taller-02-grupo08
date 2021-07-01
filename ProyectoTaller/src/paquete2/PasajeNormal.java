@@ -11,8 +11,10 @@ import java.io.Serializable;
  *
  * @author reroes
  */
-public class PasajeNormal extends PasajeInterCantonal 
-        implements Serializable{
-    
+public class PasajeNormal extends PasajeInterCantonal implements Serializable{
+
+    public PasajeNormal(double b) {
+        super(b);
+    }
     
 }
