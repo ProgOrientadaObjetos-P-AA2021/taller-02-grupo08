@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paquete3;
 
 import java.io.EOFException;
@@ -14,9 +9,10 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import paquete2.PasajeInterCantonal;
 
+
 /**
  *
- * @author reroes
+ * @author Joseph
  */
 public class LecturaArchivoSecuencial {
 
@@ -48,24 +44,25 @@ public class LecturaArchivoSecuencial {
         // 
         pasajes = new ArrayList<>();
         File f = new File(obtenerNombreArchivo());
-        if (f.exists()) {
-            while (true) {
-                try {
-                    Object registro = entrada.readObject();
-                    pasajes.add((PasajeInterCantonal)registro);
-                } catch (EOFException endOfFileException) {
-                    return; // se llegó al fin del archivo
 
-                } catch (IOException ex) {
-                    System.err.println("Error al leer el archivo: " + ex);
-                } catch (ClassNotFoundException ex) {
-                    System.err.println("No se pudo crear el objeto: " + ex);
-                } catch (Exception ex) {
-                    // System.err.println("No hay datos en el archivo: " + ex);
-                    break;
-                }
+        while (true) {
+            try {
+                
+                Object registro = entrada.readObject();
+                pasajes.add((PasajeInterCantonal)registro);
+            } catch (EOFException endOfFileException) {
+                return; // se llegó al fin del archivo
+
+            } catch (IOException ex) {
+                System.err.println("Error al leer el archivo: " + ex);
+            } catch (ClassNotFoundException ex) {
+                System.err.println("No se pudo crear el objeto: " + ex);
+            } catch (Exception ex) {
+                // System.err.println("No hay datos en el archivo: " + ex);
+                break;
             }
         }
+
     }
 
     public ArrayList<PasajeInterCantonal> obtenerListaPasajes() {

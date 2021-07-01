@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paquete3;
 
 import java.io.FileOutputStream;
@@ -10,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import paquete2.PasajeInterCantonal;
+
 
 
 public class EscrituraArchivoSecuencial {
@@ -44,6 +40,7 @@ public class EscrituraArchivoSecuencial {
     public void establecerNombreArchivo(String n){
         nombreArchivo = n;
     }
+    
     // agrega registros al archivo
     public void establecerRegistro(PasajeInterCantonal p) {
         registro = p;
@@ -51,7 +48,8 @@ public class EscrituraArchivoSecuencial {
 
     public void establecerSalida() {
         try {
-            salida.writeObject(registro); // envía el registro como salida      
+            salida.writeObject(registro); // envía el registro como salida
+            
         } catch (IOException ex) {
             System.err.println("Error al escribir en el archivo.");
             System.err.println(ex);

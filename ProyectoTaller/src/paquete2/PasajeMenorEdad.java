@@ -1,21 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paquete2;
 
 import java.io.Serializable;
 
 /**
  *
- * @author reroes
+ * @author Joseph
  */
-public class PasajeMenorEdad extends PasajeInterCantonal 
-        implements Serializable{
 
-    public PasajeMenorEdad(double b) {
-        super(b);
+public class PasajeMenorEdad extends PasajeInterCantonal
+        implements Serializable{
+    private double porcentajeDescuento;
+
+    public PasajeMenorEdad(String nombrePasajero, String identificacion, String origen, String destino, double distancia, double tarifaBase) {
+        super(nombrePasajero, identificacion, origen, destino, distancia, tarifaBase);
     }
-  
+
+    public double getPorcentajeDescuento() {
+        return porcentajeDescuento;
+    }
+
+    public void setPorcentajeDescuento(double porcentajeDescuento) {
+        this.porcentajeDescuento = porcentajeDescuento;
+    }
+
+    @Override
+    public void calcularValorPasaje() {
+        this.valorPasaje = (distancia * 0.10) + (tarifaBase -(tarifaBase * porcentajeDescuento/100));
+    }
+
+    @Override
+    public String toString() {
+        return  String.format(" %s \n Porcentaje descuento: %.2f ", super.toString(), porcentajeDescuento);
+    }
 }
+
